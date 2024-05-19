@@ -1,0 +1,17 @@
+.gamesBox {
+	display: flex;
+	gap: 40px;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	.cardBox {
+		max-width: 350px;
+		width: 100%;
+	}
+}
+
+.noGamesQuery {
+	font-size: 24px;
+	text-align: center;
+	padding: 100px;
+}

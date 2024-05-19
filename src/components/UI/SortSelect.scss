@@ -1,0 +1,11 @@
+.select {
+	width: 175px;
+	.custom-select {
+		&__control {
+			padding: 5px;
+			border-radius: 10px !important;
+			cursor: pointer !important;
+			cursor: pointer !important;
+		}
+	}
+}

@@ -1,0 +1,15 @@
+@import './shared/reset.min.css';
+
+@font-face {
+	font-family: 'Inter';
+	src: url('./fonts/Inter-Regular.ttf'), url('./fonts/Inter-Medium.ttf'),
+		url('./fonts/Inter-Bold.ttf');
+	font-style: normal;
+	font-weight: normal;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: #e7f6ff;
+	color: #000;
+}

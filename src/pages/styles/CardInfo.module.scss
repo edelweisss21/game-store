@@ -1,0 +1,64 @@
+.main {
+	max-width: 1300px;
+	padding: 40px 60px;
+	margin: 0 auto;
+	background-color: #fff;
+
+	.titleBox {
+		display: flex;
+		align-items: center;
+		gap: 0 20px;
+
+		.title {
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 39px;
+		}
+	}
+
+	.gameBox {
+		display: flex;
+		gap: 0 40px;
+
+		.cardImg {
+			max-width: 500px;
+			margin-top: 15px;
+			margin-left: 50px;
+			border-radius: 10px;
+			border: 1px solid rgb(242, 242, 242);
+		}
+	}
+
+	.rightSide {
+		display: flex;
+		flex-direction: column;
+		margin-top: 15px;
+
+		.btnPriceBox {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.priceBox {
+				display: flex;
+				gap: 0 10px;
+				.priceTitle {
+					font-size: 24px;
+					color: #bdbdbd;
+					margin-bottom: 5px;
+				}
+				.price {
+					font-size: 24px;
+				}
+			}
+			.btn {
+				text-align: center;
+			}
+		}
+	}
+	.error {
+		font-size: 26px;
+		text-align: center;
+		padding-bottom: 30px;
+	}
+}

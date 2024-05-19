@@ -1,0 +1,82 @@
+.main {
+	max-width: 1300px;
+	padding: 40px 60px;
+	margin: 0 auto;
+	background-color: #fff;
+
+	.titleBox {
+		display: flex;
+		align-items: center;
+		gap: 0 20px;
+
+		.title {
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 39px;
+		}
+	}
+
+	.inner {
+		display: flex;
+		justify-content: space-between;
+		gap: 0 20px;
+		margin-top: 45px;
+
+		.list {
+			display: flex;
+			flex-direction: column;
+			gap: 20px 0;
+			max-width: 750px;
+			width: 100%;
+			padding: 30px;
+			box-sizing: border-box;
+			border: 1px solid rgb(243, 243, 243);
+			border-radius: 40px;
+			background: rgb(255, 255, 255);
+
+			.item {
+				padding-bottom: 10px;
+				border-bottom: 1px solid #b3b3b3;
+				&:last-child {
+					border: none;
+					padding-bottom: 0;
+				}
+			}
+		}
+
+		.totalBox {
+			display: flex;
+			flex-direction: column;
+			border: 1px solid rgb(243, 243, 243);
+			border-radius: 20px;
+			background: rgba(252, 252, 252, 0.747);
+			padding: 30px;
+			height: 200px;
+
+			span {
+				color: rgb(97, 167, 31);
+				font-style: normal;
+			}
+
+			.totalTitle {
+				font-size: 22px;
+			}
+
+			.gamesPrice {
+				font-size: 18px;
+				color: #b3b3b3;
+			}
+
+			.totalFee {
+				margin: 10px 0;
+				font-size: 18px;
+				font-style: oblique;
+			}
+
+			.totalBtn {
+				margin-top: 25px;
+				font-size: 18px;
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+.gameInfoBox {
+	display: flex;
+	gap: 20px 40px;
+	flex-wrap: wrap;
+
+	.tagBox {
+		max-width: 265px;
+		width: 100%;
+
+		.gameInfoTitles {
+			margin-bottom: 3px;
+			font-size: 20px;
+			color: rgb(92, 92, 92);
+		}
+		.gameInfoDesc {
+			font-size: 14px;
+			line-height: 16px;
+		}
+	}
+	.tags {
+		max-width: 100%;
+		margin-bottom: 20px;
+	}
+}

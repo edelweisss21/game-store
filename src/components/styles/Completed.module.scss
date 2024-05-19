@@ -1,0 +1,39 @@
+.main {
+	max-width: 1300px;
+	padding: 40px 60px;
+	margin: 0 auto;
+	background-color: #fff;
+
+	.inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 100px;
+
+		.img {
+			width: 120px;
+		}
+
+		.title {
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 39px;
+			color: #87c20a;
+			margin: 10px 0;
+		}
+
+		.desc {
+			margin-top: 10px 0px;
+			font-size: 20px;
+			color: #9d9d9d;
+		}
+
+		.btnBox {
+			display: flex;
+			align-items: center;
+			gap: 0 15px;
+			margin-top: 80px;
+		}
+	}
+}

@@ -1,0 +1,47 @@
+.modal {
+	.modalTitleBox {
+		display: flex;
+		align-items: center;
+		gap: 0 5px;
+		margin-bottom: 20px;
+
+		.check {
+			filter: invert(30%) sepia(72%) saturate(348%) hue-rotate(81deg)
+				brightness(100%) contrast(89%);
+		}
+	}
+
+	.modalInfo {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 0 20px;
+
+		.modalImg {
+			border-radius: 5px;
+			border: 1px solid rgb(243, 243, 243);
+			height: 340px;
+		}
+
+		.modalBox {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0 5px;
+			margin-top: 10px;
+
+			.modalHeading {
+				font-size: 20px;
+			}
+
+			.modalPrice {
+				font-size: 20px;
+			}
+		}
+
+		.button {
+			margin-top: 30px;
+		}
+	}
+}

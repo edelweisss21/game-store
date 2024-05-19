@@ -1,0 +1,67 @@
+.card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0 20px;
+
+	.linkBox {
+		display: flex;
+		align-items: center;
+		gap: 0 20px;
+
+		.img {
+			width: 100px;
+			height: 57px;
+			border-radius: 10px;
+			border: 1px solid rgb(243, 243, 243);
+		}
+
+		.heading {
+			font-size: 18px;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.priceBox {
+		display: flex;
+		align-items: center;
+		gap: 0 10px;
+
+		.inputPrice {
+			text-align: center;
+			border-radius: 8px;
+			border: 1px solid rgb(197, 197, 197);
+			outline: none;
+			padding: 5px;
+			width: 60px;
+			transition: box-shadow 0.3s ease;
+
+			&:focus {
+				box-shadow: 1px 1px 3px 0 rgb(198, 245, 255);
+			}
+		}
+
+		.price {
+			font-size: 18px;
+		}
+
+		.removeBtn {
+			padding: 10px;
+			border: 1px solid rgb(242, 242, 242);
+			border-radius: 8px;
+			background: rgb(255, 255, 255);
+			cursor: pointer;
+			transition: background 0.3s ease;
+
+			&:hover {
+				background: rgb(0, 0, 0);
+			}
+
+			.removeImg {
+				transform: rotate(45deg);
+			}
+		}
+	}
+}

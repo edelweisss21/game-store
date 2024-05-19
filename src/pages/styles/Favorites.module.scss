@@ -1,0 +1,31 @@
+.main {
+	max-width: 1300px;
+	padding: 40px 60px;
+	margin: 0 auto;
+	background-color: #fff;
+
+	.titleBox {
+		display: flex;
+		align-items: center;
+		gap: 0 20px;
+
+		.title {
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 39px;
+		}
+	}
+
+	.box {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 45px 45px;
+
+		.gamesBox {
+			display: flex;
+			gap: 20px;
+			flex-wrap: wrap;
+		}
+	}
+}
