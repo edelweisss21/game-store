@@ -5,6 +5,10 @@
 	color: #fff;
 	border-radius: 18px;
 	transition: background 0.3s ease;
+	@media (max-width: 550px) {
+		font-size: 16px;
+		padding: 18px 24px;
+	}
 
 	&:hover {
 		background: rgb(105, 153, 47);

@@ -27,17 +27,19 @@ const CardTags = ({ game }) => {
 						))}
 				</p>
 			</div>
-			<div className={cl.tagBox}>
-				<h3 className={cl.gameInfoTitles}>Age rating</h3>
-				<p className={cl.gameInfoDesc}>
-					{game && game.esrb_rating && game.esrb_rating.name
-						? game.esrb_rating.name
-						: 'Not exist'}
-				</p>
-			</div>
-			<div className={cl.tagBox}>
-				<h3 className={cl.gameInfoTitles}>Release date</h3>
-				<p className={cl.gameInfoDesc}>{game && game.released}</p>
+			<div className={cl.ratingReleaseBox}>
+				<div className={cl.tagBox}>
+					<h3 className={cl.gameInfoTitles}>Age rating</h3>
+					<p className={cl.gameInfoDesc}>
+						{game && game.esrb_rating && game.esrb_rating.name
+							? game.esrb_rating.name
+							: 'Not exist'}
+					</p>
+				</div>
+				<div className={cl.tagBox}>
+					<h3 className={cl.gameInfoTitles}>Release date</h3>
+					<p className={cl.gameInfoDesc}>{game && game.released}</p>
+				</div>
 			</div>
 			<div className={`${cl.tagBox} ${cl.tags}`}>
 				<h3 className={cl.gameInfoTitles}>Tags</h3>

@@ -1,9 +1,11 @@
 {
+  "homepage": "https://edelweisss21.github.io/game-store/",
   "name": "game-store",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -11,12 +13,15 @@
   },
   "dependencies": {
     "axios": "^1.6.8",
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.4",
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.23.0",
-    "react-select": "^5.8.0"
+    "react-select": "^5.8.0",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

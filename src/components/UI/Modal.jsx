@@ -1,15 +1,20 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import ReactDOM from 'react-dom';
 import { CartContext } from '../../services/CartContext';
 import cl from './Modal.module.scss';
 
-const Modal = ({ children }) => {
-	const { setShowModal, showModal } = useContext(CartContext);
+const Modal = forwardRef(({ children, isOpen, setIsOpen }, ref) => {
+	const { setShowModal } = useContext(CartContext);
+
+	const onClose = () => {
+		if (isOpen) setIsOpen(false);
+		setShowModal(false);
+	};
 
 	return ReactDOM.createPortal(
-		<div className={cl.modal} onClick={() => setShowModal(false)}>
+		<div ref={ref} className={cl.modal} onClick={onClose}>
 			<div className={cl.modalContent} onClick={e => e.stopPropagation()}>
-				<div className={cl.modalClose} onClick={() => setShowModal(false)}>
+				<div className={cl.modalClose} onClick={onClose}>
 					&times;
 				</div>
 				{children}
@@ -17,6 +22,6 @@ const Modal = ({ children }) => {
 		</div>,
 		document.body
 	);
-};
+});
 
 export default Modal;

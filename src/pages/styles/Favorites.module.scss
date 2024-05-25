@@ -3,6 +3,15 @@
 	padding: 40px 60px;
 	margin: 0 auto;
 	background-color: #fff;
+	animation: animFav 0.3s forwards;
+
+	@media (max-width: 750px) {
+		padding: 20px;
+	}
+
+	@media (max-width: 450px) {
+		padding: 10px;
+	}
 
 	.titleBox {
 		display: flex;
@@ -22,10 +31,30 @@
 		justify-content: space-between;
 		padding: 45px 45px;
 
+		@media (max-width: 750px) {
+			padding: 20px;
+		}
+
+		@media (max-width: 450px) {
+			padding: 5px;
+		}
+
 		.gamesBox {
 			display: flex;
 			gap: 20px;
 			flex-wrap: wrap;
 		}
+	}
+}
+
+@keyframes animFav {
+	from {
+		opacity: 0;
+		transform: translateY(-100px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }

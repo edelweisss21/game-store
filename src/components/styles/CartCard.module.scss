@@ -4,6 +4,11 @@
 	justify-content: space-between;
 	gap: 0 20px;
 
+	@media (max-width: 550px) {
+		flex-direction: column;
+		gap: 10px 0;
+	}
+
 	.linkBox {
 		display: flex;
 		align-items: center;
@@ -18,6 +23,11 @@
 
 		.heading {
 			font-size: 18px;
+
+			@media (max-width: 750px) {
+				font-size: 14px;
+			}
+
 			&:hover {
 				text-decoration: underline;
 			}
@@ -45,6 +55,10 @@
 
 		.price {
 			font-size: 18px;
+
+			@media (max-width: 750px) {
+				font-size: 14px;
+			}
 		}
 
 		.removeBtn {

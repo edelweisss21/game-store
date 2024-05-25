@@ -3,6 +3,11 @@
 	padding: 40px 60px;
 	margin: 0 auto;
 	background-color: #fff;
+	animation: animPayment 0.3s forwards;
+
+	@media (max-width: 750px) {
+		padding: 20px;
+	}
 
 	.inner {
 		display: flex;
@@ -21,12 +26,32 @@
 			line-height: 39px;
 			color: #87c20a;
 			margin: 10px 0;
+
+			@media (max-width: 650px) {
+				font-size: 26px;
+			}
+
+			@media (max-width: 550px) {
+				font-size: 20px;
+			}
 		}
 
 		.desc {
 			margin-top: 10px 0px;
 			font-size: 20px;
 			color: #9d9d9d;
+
+			@media (max-width: 650px) {
+				font-size: 16px;
+			}
+
+			@media (max-width: 550px) {
+				font-size: 14px;
+			}
+
+			@media (max-width: 400px) {
+				font-size: 14px;
+			}
 		}
 
 		.btnBox {
@@ -35,5 +60,17 @@
 			gap: 0 15px;
 			margin-top: 80px;
 		}
+	}
+}
+
+@keyframes animPayment {
+	from {
+		opacity: 0;
+		transform: translateY(-100px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }

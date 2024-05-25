@@ -1,0 +1,55 @@
+.slick-slide > div {
+	margin: 0 10px;
+	cursor: zoom-in;
+	transition: transform 0.3s ease;
+}
+
+.slick-slide > div:hover {
+	transform: scale(1.03);
+}
+
+.slick-arrow::before {
+	color: black;
+	font-size: 26px;
+}
+
+.carouselImg {
+	border-radius: 5px;
+	height: 155px;
+}
+
+.modalImg {
+	max-width: 1500px;
+	width: 100%;
+	border-radius: 30px;
+}
+
+@media (max-width: 1000px) {
+	.modalImg {
+		height: 500px;
+	}
+}
+
+@media (max-width: 750px) {
+	.slick-prev {
+		left: -10px;
+	}
+
+	.slick-next {
+		right: -10px;
+	}
+
+	.slick-arrow::before {
+		opacity: 1;
+	}
+
+	.modalImg {
+		height: 400px;
+	}
+}
+
+@media (max-width: 500px) {
+	.modalImg {
+		height: 300px;
+	}
+}

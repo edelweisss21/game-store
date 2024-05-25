@@ -3,6 +3,14 @@
 	gap: 20px 40px;
 	flex-wrap: wrap;
 
+	.ratingReleaseBox {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: 570px;
+		width: 100%;
+	}
+
 	.tagBox {
 		max-width: 265px;
 		width: 100%;

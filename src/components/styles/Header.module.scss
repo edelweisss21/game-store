@@ -1,11 +1,16 @@
 .header {
 	max-width: 1300px;
+	width: 100%;
 	padding: 0 15px;
 	margin: 0 auto;
 	background-color: #fff;
 	border-radius: 20px 20px 0 0;
 	padding: 43px 60px;
 	border-bottom: 1px solid #eaeaea;
+
+	@media (max-width: 750px) {
+		padding: 43px 20px;
+	}
 
 	.nav {
 		display: flex;
@@ -20,11 +25,17 @@
 				font-size: 20px;
 				font-weight: 700;
 				margin-bottom: 3px;
+				@media (max-width: 550px) {
+					font-size: 16px;
+				}
 			}
 
 			.logoSubtitle {
 				font-size: 14px;
 				color: #9d9d9d;
+				@media (max-width: 550px) {
+					font-size: 12px;
+				}
 			}
 		}
 
@@ -32,14 +43,21 @@
 			display: flex;
 			align-items: center;
 			gap: 0 30px;
+			@media (max-width: 550px) {
+				flex-direction: column;
+				gap: 15px 0;
+			}
 
 			.elemBox {
 				display: flex;
 				align-items: center;
 				gap: 0 10px;
 				color: #5c5c5c;
-				transition: all 0.3s ease;
 				position: relative;
+				transition: all 0.3s ease;
+				@media (max-width: 550px) {
+					font-size: 14px;
+				}
 
 				&:hover {
 					transform: translateY(-3px);

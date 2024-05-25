@@ -1,4 +1,10 @@
-import React, { useContext, useMemo, useState, useEffect } from 'react';
+import React, {
+	useContext,
+	useMemo,
+	useState,
+	useCallback,
+	useRef,
+} from 'react';
 import cl from './styles/SortAndFilter.module.scss';
 import Card from './Card';
 import Modal from './UI/Modal';
@@ -9,13 +15,15 @@ const SortAndFilter = ({ games, sortOption, query, page }) => {
 	const price = 55;
 	const { showModal, setShowModal } = useContext(CartContext);
 	const [selectedGame, setSelectedGame] = useState(null);
+	const nodeRef = useRef(null);
 
-	const handleSelectedGame = game => {
-		setSelectedGame(game);
-		setShowModal(true);
-	};
-
-	console.log('selectedGame', selectedGame);
+	const handleSelectedGame = useCallback(
+		game => {
+			setSelectedGame(game);
+			setShowModal(true);
+		},
+		[setShowModal]
+	);
 
 	const sortedGames = useMemo(() => {
 		let sorted = [...games];
@@ -57,7 +65,9 @@ const SortAndFilter = ({ games, sortOption, query, page }) => {
 			)}
 			{showModal && selectedGame && (
 				<Modal>
-					<ModalCart game={selectedGame} price={price} />
+					<div ref={nodeRef}>
+						<ModalCart game={selectedGame} price={price} />
+					</div>
 				</Modal>
 			)}
 		</>

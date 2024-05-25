@@ -13,7 +13,10 @@ const ModalCart = ({ game, price }) => {
 				<h2 className={cl.modalTitle}>The game has been added to the cart</h2>
 			</div>
 			<div className={cl.modalInfo}>
-				<Link to={`/game-store/${game && game.id}`}>
+				<Link
+					to={`/game-store/${game && game.id}`}
+					onClick={() => setShowModal(false)}
+				>
 					<img
 						className={cl.modalImg}
 						src={game && game.background_image}
@@ -21,7 +24,10 @@ const ModalCart = ({ game, price }) => {
 					/>
 				</Link>
 				<div className={cl.modalBox}>
-					<Link to={`/game-store/${game && game.id}`}>
+					<Link
+						to={`/game-store/${game && game.id}`}
+						onClick={() => setShowModal(false)}
+					>
 						<h5 className={cl.modalHeading}>{game && game.name} -</h5>
 					</Link>
 					<p className={cl.modalPrice}>{price}$</p>

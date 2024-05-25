@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import cl from './styles/CartCard.module.scss';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../services/CartContext';
+import Slider from 'react-slick';
 
 const CartCard = props => {
 	const { removeFromCart } = useContext(CartContext);
@@ -9,7 +10,7 @@ const CartCard = props => {
 		removeFromCart(props.game.id);
 		props.onRemoveCart(props.game.id);
 	};
-	
+
 	return (
 		<div className={cl.card}>
 			<Link
@@ -25,14 +26,14 @@ const CartCard = props => {
 					className={cl.inputPrice}
 					onChange={e => {
 						const newQty = parseInt(e.target.value, 10);
-						if (newQty > 0 && newQty <= 10) {
+						if (newQty > 0 && newQty <= 100) {
 							props.handleQty(newQty);
 						}
 					}}
 					value={props.quantity}
 					type='number'
 					min='1'
-					max='10'
+					max='100'
 				/>
 				<div onClick={handleRemoveFromCart} className={cl.removeBtn}>
 					<img className={cl.removeImg} src='./add.svg' alt='add' />

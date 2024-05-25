@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useCallback } from 'react';
 import cl from './styles/CardInfo.module.scss';
 import { useParams, useLocation } from 'react-router-dom';
 import CardTags from '../components/CardTags';
@@ -9,6 +9,8 @@ import { CartContext } from '../services/CartContext';
 import ArrowBack from '../components/UI/ArrowBack';
 import Modal from '../components/UI/Modal';
 import ModalCart from '../components/ModalCart';
+import Carousel from '../components/UI/Carousel';
+import { CSSTransition } from 'react-transition-group';
 
 const CardInfo = () => {
 	const [game, setGame] = useState(null);
@@ -21,15 +23,14 @@ const CardInfo = () => {
 	const page = parseInt(pageNum.search.split('=')[1]);
 	const [pageSize, setPageSize] = useState(30);
 	const { addToCart } = useContext(CartContext);
-	console.log('game', game);
-	console.log('pageNum', pageNum);
-	console.log('gameId', gameId);
-	console.log('page', page);
 
-	const handleSelectedGame = game => {
-		addToCart(game);
-		setShowModal(true);
-	};
+	const handleSelectedGame = useCallback(
+		game => {
+			addToCart(game);
+			setShowModal(true);
+		},
+		[addToCart, setShowModal]
+	);
 
 	useEffect(() => {
 		const selectedGame = games.find(g => g.id === gameId);
@@ -41,44 +42,46 @@ const CardInfo = () => {
 		}
 	}, [games, gameId]);
 
-	console.log('showModal', showModal);
-
 	return (
 		<div className={cl.main}>
-			<div className={cl.titleBox}>
-				<ArrowBack />
-				<h1 className={cl.title}>{game && game.name}</h1>
-			</div>
-			{error && (
+			{error ? (
 				<h2 className={cl.error}>Oops, we couldn't upload the data.</h2>
-			)}
-			{isLoading ? (
+			) : isLoading ? (
 				<Loader />
 			) : (
-				<div className={cl.gameBox}>
-					<img
-						className={cl.cardImg}
-						src={game && game.background_image}
-						alt={game && game.name}
-					/>
-					<div className={cl.rightSide}>
-						<CardTags game={game} />
-						<div className={cl.btnPriceBox}>
-							<div className={cl.priceBox}>
-								<p className={cl.priceTitle}>Price:</p>
-								<p className={cl.price}>{price}$</p>
+				<>
+					<div className={cl.titleBox}>
+						<ArrowBack />
+						<h1 className={cl.title}>{game && game.name}</h1>
+					</div>
+					<div className={cl.gameBox}>
+						<img
+							className={cl.cardImg}
+							src={game && game.background_image}
+							alt={game && game.name}
+						/>
+						<div className={cl.rightSide}>
+							<CardTags game={game} />
+							<div className={cl.btnPriceBox}>
+								<div className={cl.priceBox}>
+									<p className={cl.priceTitle}>Price:</p>
+									<p className={cl.price}>{price}$</p>
+								</div>
+								<Button
+									className={cl.btn}
+									onClick={() => {
+										handleSelectedGame(game);
+									}}
+								>
+									Add to cart
+								</Button>
 							</div>
-							<Button
-								className={cl.btn}
-								onClick={() => {
-									handleSelectedGame(game);
-								}}
-							>
-								Add to cart
-							</Button>
 						</div>
 					</div>
-				</div>
+					<div className={cl.carouselBox}>
+						<Carousel game={game} />
+					</div>
+				</>
 			)}
 			{showModal && (
 				<Modal>

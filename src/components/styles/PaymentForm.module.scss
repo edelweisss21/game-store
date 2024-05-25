@@ -12,6 +12,11 @@
 		justify-content: space-between;
 		gap: 0 30px;
 
+		@media (max-width: 630px) {
+			flex-direction: column;
+			gap: 15px 0;
+		}
+
 		.formName,
 		.formDates {
 			display: flex;
@@ -43,6 +48,10 @@
 		border: none;
 		cursor: pointer;
 		transition: background 0.3s ease;
+
+		@media (max-width: 750px) {
+			padding: 18px 30px;
+		}
 
 		&:hover {
 			background: rgb(105, 153, 47);

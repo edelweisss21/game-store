@@ -22,6 +22,16 @@
 			border-radius: 5px;
 			border: 1px solid rgb(243, 243, 243);
 			height: 340px;
+			max-width: 602px;
+			width: 100%;
+
+			@media (max-width: 550px) {
+				height: 300px;
+			}
+
+			@media (max-width: 430px) {
+				height: 200px;
+			}
 		}
 
 		.modalBox {

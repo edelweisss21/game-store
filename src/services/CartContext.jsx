@@ -8,19 +8,22 @@ const CartProvider = ({ children }) => {
 	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
-		const storedCart = JSON.parse(localStorage.getItem('cart'));
-		const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
+		const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+		const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
 		if (storedCart) setCart(storedCart);
 		if (storedFavorites) setFavorites(storedFavorites);
 	}, []);
 
-	useEffect(() => {
-		localStorage.setItem('cart', JSON.stringify(cart));
-		localStorage.setItem('favorites', JSON.stringify(favorites));
-	}, [cart, favorites]);
-
 	const addToCart = game => {
-		setCart(prev => [...prev, game]);
+		setCart(prev => {
+			const existingGameIndex = prev.findIndex(item => item.id === game.id);
+			if (existingGameIndex !== -1) {
+				const updatedCart = [...prev];
+				updatedCart[existingGameIndex].quantity++;
+				return updatedCart;
+			}
+			return [...prev, { ...game, quantity: 1 }];
+		});
 	};
 
 	const removeFromCart = gameId => {
@@ -60,6 +63,15 @@ const CartProvider = ({ children }) => {
 		}
 	};
 
+	const clearCart = () => {
+		setCart([]);
+	};
+
+	useEffect(() => {
+		localStorage.setItem('cart', JSON.stringify(cart));
+		localStorage.setItem('favorites', JSON.stringify(favorites));
+	}, [cart, favorites]);
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -74,6 +86,7 @@ const CartProvider = ({ children }) => {
 				isInFavorites,
 				showModal,
 				setShowModal,
+				clearCart,
 			}}
 		>
 			{children}

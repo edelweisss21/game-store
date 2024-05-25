@@ -3,23 +3,43 @@
 	padding: 0 15px;
 	margin: 0 auto;
 	background-color: #fff;
+	@media (max-width: 750px) {
+		padding: 23px 20px;
+	}
 
 	.box {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		padding: 45px 45px;
+		@media (max-width: 750px) {
+			padding: 23px 20px;
+		}
+
+		@media (max-width: 750px) {
+			flex-direction: column;
+			gap: 15px 0;
+		}
+
 		.title {
 			font-size: 32px;
 			font-weight: 700;
+			@media (max-width: 750px) {
+				font-size: 28px;
+			}
 		}
 
 		.inputBox {
 			display: flex;
 			align-items: center;
 			gap: 0 10px;
+			@media (max-width: 500px) {
+				flex-direction: column-reverse;
+				gap: 10px 0;
+			}
 		}
 	}
+	padding-bottom: 45px;
 }
 
 .error {

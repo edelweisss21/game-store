@@ -1,3 +1,14 @@
 .main {
-	padding-top: 85px;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	padding-top: 25px;
+
+	.mid {
+		flex-grow: 1;
+		background-color: #fff;
+		max-width: 1300px;
+		width: 100%;
+		margin: 0 auto;
+	}
 }

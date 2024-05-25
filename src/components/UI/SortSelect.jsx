@@ -21,7 +21,9 @@ const SortSelect = ({ onChange, value }) => {
 	const handleSelect = selectedOption => {
 		onChange(selectedOption.value);
 	};
-	console.log('value', value);
+
+	const selectedOption = options.find(option => option.value === value);
+
 	return (
 		<Select
 			className='select'
@@ -29,7 +31,7 @@ const SortSelect = ({ onChange, value }) => {
 			placeholder='Sort by...'
 			onChange={handleSelect}
 			options={options}
-			value={value}
+			value={selectedOption}
 		/>
 	);
 };

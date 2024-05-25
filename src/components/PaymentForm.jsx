@@ -75,6 +75,7 @@ const PaymentForm = () => {
 								message: 'Please enter correct email address',
 							},
 						})}
+						placeholder='example@ex.com'
 						type='text'
 						id='email'
 					/>

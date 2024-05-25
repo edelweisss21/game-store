@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import cl from './styles/Main.module.scss';
 import Input from './UI/Input';
 import useGames from '../hooks/useGames';
@@ -9,12 +9,14 @@ import SortAndFilter from './SortAndFilter';
 const Main = () => {
 	const { games, isLoading, error, page } = useGames();
 	const [query, setQuery] = useState('');
-	const [sortOption, setSortOption] = useState('');
-
-	console.log('games', games);
+	const [sortOption, setSortOption] = useState('popular');
 
 	const handleSortOption = useCallback(selectedOption => {
 		setSortOption(selectedOption);
+	}, []);
+
+	const handleSearch = useCallback(e => {
+		setQuery(e.target.value);
 	}, []);
 
 	return (
@@ -27,19 +29,12 @@ const Main = () => {
 						onChange={handleSortOption}
 						value={sortOption}
 					/>
-					<Input
-						onChange={e => {
-							setQuery(e.target.value);
-							console.log('e.target.value', e.target.value);
-						}}
-						placeholder='Search...'
-					/>
+					<Input onChange={handleSearch} placeholder='Search...' />
 				</div>
 			</div>
-			{error && (
+			{error ? (
 				<h2 className={cl.error}>Oops, we couldn't upload the data.</h2>
-			)}
-			{isLoading ? (
+			) : isLoading ? (
 				<Loader />
 			) : (
 				<SortAndFilter

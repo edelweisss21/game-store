@@ -1,38 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import cl from './styles/Cart.module.scss';
 import CartCard from '../components/CartCard';
 import Button from '../components/UI/Button';
 import calculatePercentage from '../hooks/useCalculate';
 import EmptyCart from '../components/EmptyCart';
 import ArrowBack from '../components/UI/ArrowBack';
+import { CartContext } from '../services/CartContext';
 
 const Cart = () => {
-	const [cart, setCart] = useState([]);
+	const [cartLocal, setCartLocal] = useState([]);
 	const [gamesPrice, setGamesPrice] = useState(0);
 	const [fee, setFee] = useState(0);
 	const [totalPrice, setTotalPrice] = useState(0);
 	const [qty, setQty] = useState({});
-	console.log('qty', qty);
+	const { clearCart } = useContext(CartContext);
 
 	useEffect(() => {
 		const saved = localStorage.getItem('cart');
 		if (saved) {
 			const parsed = JSON.parse(saved);
-			setCart(parsed);
+			setCartLocal(parsed);
 
 			const initialQty = {};
 			parsed.forEach(game => {
-				initialQty[game.id] = 1;
+				initialQty[game.id] = game.quantity || 1;
 			});
 			setQty(initialQty);
 		}
 	}, []);
 
-	console.log('qty', qty);
-
 	useEffect(() => {
 		let newTotalPrice = 0;
-		cart.forEach(game => {
+		cartLocal.forEach(game => {
 			const savedPrice = localStorage.getItem(`price_${game.id}`);
 			if (savedPrice) {
 				const parsedPrice = JSON.parse(savedPrice);
@@ -43,10 +42,10 @@ const Cart = () => {
 		setGamesPrice(newTotalPrice);
 		setFee(calculatePercentage(newTotalPrice, 5));
 		setTotalPrice(newTotalPrice + calculatePercentage(newTotalPrice, 5));
-	}, [cart, qty]);
+	}, [cartLocal, qty]);
 
 	const onRemoveCart = id => {
-		setCart(prev => prev.filter(item => item.id !== id));
+		setCartLocal(prev => prev.filter(item => item.id !== id));
 
 		const updatedQty = { ...qty };
 		delete updatedQty[id];
@@ -59,16 +58,21 @@ const Cart = () => {
 		setQty(updatedQty);
 	};
 
+	const removeAllGamesFromCart = () => {
+		setCartLocal([]);
+		clearCart();
+	};
+
 	return (
 		<div className={cl.main}>
 			<div className={cl.titleBox}>
 				<ArrowBack />
 				<h1 className={cl.title}>Cart</h1>
 			</div>
-			{cart.length > 0 ? (
+			{cartLocal.length > 0 ? (
 				<div className={cl.inner}>
 					<ul className={cl.list}>
-						{cart.map(game => (
+						{cartLocal.map(game => (
 							<li className={cl.item} key={game.id}>
 								<CartCard
 									game={game}
@@ -78,25 +82,33 @@ const Cart = () => {
 											? JSON.parse(localStorage.getItem(`price_${game.id}`))
 											: null
 									}
-									quantity={qty[game.id] || 1}
+									quantity={qty[game.id] || game.quantity || 1}
 									handleQty={newQty => handleQty(game.id, newQty)}
 								/>
 							</li>
 						))}
 					</ul>
-					<div className={cl.totalBox}>
-						<p className={cl.gamesPrice}>
-							The price of games: <span>{gamesPrice}$</span>
-						</p>
-						<p className={cl.totalFee}>
-							Fee 5%: <span>{fee}$</span>
-						</p>
-						<h5 className={cl.totalTitle}>
-							The final price:<span> {totalPrice}$</span>
-						</h5>
-						<Button to={`/game-store/payment`} className={cl.totalBtn}>
-							Proceed to payment
-						</Button>
+					<div className={cl.rightside}>
+						<div className={cl.totalBox}>
+							<p className={cl.gamesPrice}>
+								The price of games: <span>{gamesPrice}$</span>
+							</p>
+							<p className={cl.totalFee}>
+								Fee 5%: <span>{fee}$</span>
+							</p>
+							<h5 className={cl.totalTitle}>
+								The final price:<span> {totalPrice}$</span>
+							</h5>
+							<Button to={`/game-store/payment`} className={cl.totalBtn}>
+								Proceed to payment
+							</Button>
+						</div>
+						<a
+							onClick={removeAllGamesFromCart}
+							className={cl.removeAllGamesBtn}
+						>
+							Remove all games
+						</a>
 					</div>
 				</div>
 			) : (
