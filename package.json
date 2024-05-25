@@ -1,10 +1,11 @@
 {
-	"homepage": "https://edelweisss21.github.io/games-store/",
+	"homepage": "https://edelweisss21.github.io/game-store",
 	"name": "game-store",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist",
 		"dev": "vite",
 		"build": "vite build",
