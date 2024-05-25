@@ -1,9 +1,9 @@
-@import '@/shared/reset.min.css';
+@import './shared/reset.min.css';
 
 @font-face {
 	font-family: 'Inter';
-	src: url('/fonts/Inter-Regular.ttf'), url('/fonts/Inter-Medium.ttf'),
-		url('/fonts/Inter-Bold.ttf');
+	src: url('./fonts/Inter-Regular.ttf'), url('./fonts/Inter-Medium.ttf'),
+		url('./fonts/Inter-Bold.ttf');
 	font-style: normal;
 	font-weight: normal;
 }

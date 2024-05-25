@@ -9,7 +9,7 @@ import Completed from './components/Completed.jsx';
 import Main from './components/Main.jsx';
 import CartProvider from './services/CartContext.jsx';
 import App from './App.jsx';
-import '@/index.module.scss';
+import './index.module.scss';
 
 const router = createBrowserRouter([
 	{
